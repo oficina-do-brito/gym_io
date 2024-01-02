@@ -5,13 +5,14 @@ export interface IpropsAuthContext {
   children: ReactNode;
 }
 
-export interface UsuarioAuthenticado{
-  id: number,
-  nome: string,
-  email: string,
-  status: string,
-  password: string,
-  dataNascimento: Date
+export interface UsuarioAuthenticado {
+  id: number;
+  nome: string;
+  email: string;
+  status: string;
+  password: string;
+  dataNascimento: Date;
+  tipoUsuario: string;
 }
 
 export type ContextProvider = {
@@ -20,6 +21,6 @@ export type ContextProvider = {
   singIn: (email: string, password: string) => Promise<boolean>;
 };
 
-export interface IUserComplete{
-  id:number;
+export interface IUserComplete {
+  id: number;
 }
