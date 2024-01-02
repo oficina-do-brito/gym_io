@@ -6,17 +6,17 @@ vars:
 tasks:
   t01#_execute_backend:
     cmds:
-      - "cd backend/ && npm i && docker-compose up -d && npm run start:dev"
+      - "cd gym_backend/ && npm i && docker-compose up -d && npm run start:dev"
     silent: true
 
-  t02#_execute_frontend:
+  t02#_execute_gym_frontend:
     cmds:
-      - "cd frontend/ && npm i && npm run dev"
+      - "cd gym_frontend/ && npm i && npm run dev"
     silent: true
 
   t03#_execute_down:
     cmds:
-      - "cd backend/ && docker-compose down"
+      - "cd gym_backend/ && docker-compose down"
     silent: true
 
   t04#_stop_all_containers:

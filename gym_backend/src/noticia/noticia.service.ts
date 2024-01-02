@@ -28,25 +28,30 @@ export class NoticiaService {
     id: number,
     createNoticiaDTO: CreateNoticiaDTO,
   ): Promise<Noticia> {
-    const admin = await this.usuarioRepository.findOne({ where: { id } });
-    if (admin) {
+    const usuario = await this.usuarioRepository.findOne({ where: { id } });
+    if (usuario) {
       const noticiaNova: Noticia = new Noticia();
       noticiaNova.titulo = createNoticiaDTO["titulo"];
       noticiaNova.descricao = createNoticiaDTO["descricao"];
       noticiaNova.nomeAutor = createNoticiaDTO["nomeAutor"];
 
-      if (!admin.noticias) {
-        admin.noticias = [];
-      }
-      admin.addNoticia(noticiaNova);
-      this.usuarioRepository.create({ ...admin });
-      this.usuarioRepository.save(admin);
+      if (!usuario.noticias) {
+        usuario.noticias = [];
+      } else if (usuario.tipoUsuario === "admin") {
+        usuario.addNoticia(noticiaNova);
+        this.usuarioRepository.create({ ...usuario });
+        this.usuarioRepository.save(usuario);
 
-      const noticia = this.noticiaRepository.create({
-        ...createNoticiaDTO,
-        admin,
-      });
-      return await this.noticiaRepository.save(noticia);
+        const noticia = this.noticiaRepository.create({
+          ...createNoticiaDTO,
+          admin: usuario,
+        });
+        return await this.noticiaRepository.save(noticia);
+      } else {
+        throw new NotFoundException(
+          `Usuario with this ID ${id} not an administrator`,
+        );
+      }
     }
     throw new NotFoundException(`Admin ID ${id} not found`);
   }
@@ -65,10 +70,16 @@ export class NoticiaService {
     throw new NotFoundException(`Noticia ID ${id} not found`);
   }
 
-  async update(id: number,updateNoticiaDTO: UpdateNoticiaDTO): Promise<Noticia | null> {
-    const noticia = await this.noticiaRepository.findOne( { where: { id } });
+  async update(
+    id: number,
+    updateNoticiaDTO: UpdateNoticiaDTO,
+  ): Promise<Noticia | null> {
+    const noticia = await this.noticiaRepository.findOne({ where: { id } });
     if (noticia) {
-      const linhasAfetas = await this.noticiaRepository.update(id,updateNoticiaDTO);
+      const linhasAfetas = await this.noticiaRepository.update(
+        id,
+        updateNoticiaDTO,
+      );
       return linhasAfetas ? (updateNoticiaDTO as Noticia) : null;
     }
     throw new NotFoundException(`Noticia ID ${id} not found`);

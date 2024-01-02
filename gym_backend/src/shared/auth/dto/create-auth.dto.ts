@@ -5,5 +5,6 @@ export class CreateAuthDto {
     private readonly email: string,
     private readonly status: string,
     private readonly dataNascimento: Date,
+    private readonly tipoUsuario: string,
   ) {}
 }
