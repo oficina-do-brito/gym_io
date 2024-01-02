@@ -1,0 +1,13 @@
+{
+  "name": "gym_mobile",
+  "displayName": "gym_mobile",
+  "expo": {
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "cover"
+    },
+    "plugins": [
+      "expo-router"
+    ]
+  }
+}

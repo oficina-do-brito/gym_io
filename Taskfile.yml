@@ -1,0 +1,47 @@
+version: "3"
+
+vars:
+  GREETING: ""
+
+tasks:
+  t01#_execute_backend:
+    cmds:
+      - "cd backend/ && npm i && docker-compose up -d && npm run start:dev"
+    silent: true
+
+  t02#_execute_frontend:
+    cmds:
+      - "cd frontend/ && npm i && npm run dev"
+    silent: true
+
+  t03#_execute_down:
+    cmds:
+      - "cd backend/ && docker-compose down"
+    silent: true
+
+  t04#_stop_all_containers:
+    cmds:
+      - "docker stop $(docker ps -a -q)"
+    silent: true
+
+  t05#_remove_containers:
+    cmds:
+      - "docker rm $(docker ps -a -q)"
+    silent: true
+
+  t06#_remove_images:
+    cmds:
+      - "docker rmi $(docker images -q)"
+    silent: true
+
+  t07#_parar:
+    cmds:
+      - npm install -g kill-port
+      - npx kill-port 3003
+      - npx kill-port 3000
+
+  t08#_limpar:
+    cmds:
+      - mkdir -p tmpdir/
+      - defer: rm -rf tmpdir/
+      - echo 'Do work on tmpdir/'
