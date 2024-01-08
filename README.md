@@ -26,6 +26,7 @@
 ```
   npm install -g @go-task/cli
 ```
+- Uma coisa importante a se fazer é reiniciar o vscode depois de instalar o task, pelo menos no meu não apareceu as tasks de primeira :sweat_smile: tive que reiniciar.
 
 ## Modelo_Conceitual
 
@@ -51,26 +52,19 @@ Mobile:
 
 ## Rodando_aplicação
 
-### Prerequisitos
+### Pré Requisitos
 
-- Se quizer rodar o projeto com banco ja de database criada, é a conselhavel ter o docker e docker-compose na sua maquina.
+- Se quiser rodar o projeto com banco já de database criado, é aconselhável ter o docker e docker-compose na sua máquina. Minha pessoa usa linux mint e ele esta na minhas ferramentas de developer e é muito fácil instalar [veja aqui](https://github.com/oficina-do-brito/p1_manutencao/blob/main/my_programs/programs.md).
 - Modificar o arquivo .env.example para .env e colocar suas variaveis de ambiente:
 
-  -> DB_HOST= o base path que a aplicação vai rodar sugest:localhost
-
-  -> DB_TYPE= o tipo do seu banco de dados mysql, postgres etc sugest:postgres
-
-  -> DB_PORT= a porta que esta sendo exporta para connexao com db sugest:5432
-
-  -> DB_USERNAME= username sugest:postgres
-
-  -> DB_PASSWORD= password sugest:postgres
-
-  -> DB_DATABASE= database sugest:api_ginasio
-
-  -> SECRET_KEY= um segredo para construção do jwt sugest:qualquer_secredo
-
-  -> SALT = um salt de encriptação de senhas sugest:qualquer_valor_numerico
+  - [ ] DB_HOST=localhost
+  - [ ] DB_TYPE= o tipo do seu banco de dados mysql, postgres etc... sugest:postgres
+  - [ ] DB_PORT= a porta que esta sendo exposta para connexao com db sugest:5432
+  - [ ] DB_USERNAME= username sugest:postgres
+  - [ ] DB_PASSWORD= password sugest:postgres
+  - [ ] DB_DATABASE= database sugest:api_ginasio
+  - [ ] SECRET_KEY= um segredo para construção do jwt sugest:qualquer_secredo_string
+  - [ ] SALT = um salt de encriptação de senhas sugest:qualquer_valor_numerico
 
 ### Rodando o projeto backend
 
@@ -83,15 +77,14 @@ Mobile:
 ## Rodando frontend
 
 ### Prerequisitos
-
-- Ter node instalado na maquina;
+- Ter a aplicação backend rodando.
 - Certificar-se de estar com o [backend](https://github.com/oficina-do-brito/ginasio) rodando.
 
 ### Rodando o projeto
 
 ` npm i && npm run dev`
 
-## Rodando_aplicação
+## Rodando_aplicação_mobile
 
 ### Prerequisitos
 
@@ -102,8 +95,8 @@ Mobile:
   npm install --global yarn
 ```
 
-- Expo go instalado no seu smartfone;
-- Certificar-se de estar com o [backend](https://github.com/oficina-do-brito/ginasio) rodando.
+- Expo go instalado no seu smartfone.
+- Certificar-se de estar com o backend rodando.
 
 ### Rodando o projeto
 
