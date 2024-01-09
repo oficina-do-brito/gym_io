@@ -45,3 +45,8 @@ tasks:
       - mkdir -p tmpdir/
       - defer: rm -rf tmpdir/
       - echo 'Do work on tmpdir/'
+
+  t009#run_mobile:
+    cmds:
+      - "cd gym_mobile/ && npm i && npx expo run:android"
+    silent: true

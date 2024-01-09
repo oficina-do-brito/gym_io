@@ -1,7 +1,8 @@
-{
-  "semi": true,
-  "trailingComma": "all",
-  "singleQuote": true,
-  "printWidth": 80,
-  "arrowParens": "avoid"
-}
+module.exports = {
+    semi: true,
+    bracketSpacing: false,
+    jsxBracketSameLine: true,
+    singleQuote: true,
+    trailingComma: 'all',
+    arrowParens: 'avoid',
+    };

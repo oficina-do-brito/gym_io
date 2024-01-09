@@ -1,13 +1,20 @@
 {
-  "name": "gym_mobile",
-  "displayName": "gym_mobile",
   "expo": {
+    "name": "gym_mobile",
+    "slug": "gym_mobile",
+    "version": "1.0.0",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "cover"
     },
     "plugins": [
       "expo-router"
-    ]
+    ],
+    "android": {
+      "package": "com.clodoaldoneto.gym_mobile"
+    },
+    "ios": {
+      "bundleIdentifier": "yes"
+    }
   }
 }
