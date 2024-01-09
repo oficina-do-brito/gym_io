@@ -100,6 +100,6 @@ Mobile:
 
 ### Rodando o projeto
 
-` yarn install && npx expo start`
+` npm install && npx expo run:android -c`
 
 - Escanear qrcode do terminal e ver a aplicação.
