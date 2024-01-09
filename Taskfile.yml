@@ -4,49 +4,50 @@ vars:
   GREETING: ""
 
 tasks:
-  t01#_execute_backend:
+  t1_run_backend:
     cmds:
       - "cd gym_backend/ && npm i && docker-compose up -d && npm run start:dev"
     silent: true
 
-  t02#_execute_gym_frontend:
+  t2_run_frontend:
     cmds:
       - "cd gym_frontend/ && npm i && npm run dev"
     silent: true
 
-  t03#_execute_down:
+  t3_derrubar_containers:
     cmds:
       - "cd gym_backend/ && docker-compose down"
     silent: true
 
-  t04#_stop_all_containers:
+  t4_stop_containers:
     cmds:
       - "docker stop $(docker ps -a -q)"
     silent: true
 
-  t05#_remove_containers:
+  t5_remover_containers:
     cmds:
       - "docker rm $(docker ps -a -q)"
     silent: true
 
-  t06#_remove_images:
+  t6_remover_images:
     cmds:
       - "docker rmi $(docker images -q)"
     silent: true
 
-  t07#_parar:
+  t7_parar_apps:
     cmds:
       - npm install -g kill-port
       - npx kill-port 3003
       - npx kill-port 3000
+      - npx kill-port 8081
 
-  t08#_limpar:
+  t8_limpar:
     cmds:
       - mkdir -p tmpdir/
       - defer: rm -rf tmpdir/
       - echo 'Do work on tmpdir/'
 
-  t009#run_mobile:
+  t9_run_mobile:
     cmds:
       - "cd gym_mobile/ && npm i && npx expo run:android"
     silent: true
