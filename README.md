@@ -89,12 +89,6 @@ Mobile:
 ### Prerequisitos
 
 - Ter node instalado na maquina;
-- Gerenciador de pacotes yarn se não tiver;
-
-```
-  npm install --global yarn
-```
-
 - Expo go instalado no seu smartfone.
 - Certificar-se de estar com o backend rodando.
 
